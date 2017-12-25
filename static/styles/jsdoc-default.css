@@ -16,7 +16,7 @@ body {
   padding: 0;
   font-family: 'Source Sans Pro', Helvetica, sans-serif;
   font-size: 16px;
-  line-height: 160%;
+  line-height: 1.5;
 }
 
 a,
@@ -38,7 +38,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: #000;
   font-weight: 400;
   margin: 0;
 }
@@ -49,7 +48,14 @@ h1 {
   margin: 1em 0 .5em;
 }
 
-h1.page-title {margin-bottom: 10px;font-size: 34px;font-weight: 300;border-bottom: solid 2px #ddd;padding: .5em 0 .5em;margin-top: 0;}
+h1.page-title {
+  margin-bottom: 10px;
+  font-size: 34px;
+  font-weight: 300;
+  border-bottom: solid 2px #ddd;
+  padding: .5em 0 .5em;
+  margin-top: 0;
+}
 
 h2 {
   font-size: 32px;
@@ -58,28 +64,21 @@ h2 {
 }
 
 h3 {
-  /* margin-top: 1em; */
-  /* margin-bottom: 16px; */
-  /* font-weight: bold; */
   padding: 0;
-  margin: 1em 0 .6em;
-  font-size: 28px;
-  /* border-bottom: 1px solid #eee; */
-  /* padding-bottom: 15px; */
+  margin: 1.5em 0 .5em;
+  font-size: 1.5em;
 }
 
 h4 {
-  font-size: 18px;
-  margin: 1em 0 .2em;
+  font-size: 1.2em;
+  margin: 1.25em 0 0.25em;
   color: #4d4e53;
-  /* border-bottom: 1px solid #eee; */
-  padding-bottom: 8px;
 }
 
-h5, .container-overview .subsection-title {
-  font-size: 120%;
-  /* letter-spacing: -0.01em; */
-  margin: 20px 0 5px;
+h5 {
+  color: #4d4e53;
+  font-size: 1em;
+  margin: 0.75em 0 0.25em;
 }
 
 h6 {
@@ -106,14 +105,8 @@ blockquote {
 }
 
 .class-description {
-  font-size: 130%;
-  line-height: 140%;
   margin-bottom: 1em;
   margin-top: 1em;
-}
-
-.class-description:empty {
-  margin: 0
 }
 
 /** Container **/
@@ -126,6 +119,10 @@ blockquote {
 
 header {
   display: block
+}
+
+header > h2 {
+  display: none;
 }
 
 section {
@@ -191,10 +188,6 @@ section {
 
 .readme ul, .readme ol {
   padding-left: 2em;
-}
-
-.readme pre > code {
-  font-size: 0.85em;
 }
 
 .readme table {
@@ -288,10 +281,9 @@ footer {
   color: hsl(0, 0%, 28%);
   margin-left: 250px;
   display: block;
-  padding: 30px;
+  padding: 1em 30px 0.5em;
   font-style: italic;
   font-size: 90%;
-  border-top: 1px solid #eee;
 }
 
 .ancestors {
@@ -330,6 +322,11 @@ footer {
   line-height: 30px;
 }
 
+/* :empty pseudo-class isn't supported yet */
+.details.empty {
+  display: none;
+}
+
 .details dt {
    width: 120px;
    float: left;
@@ -360,9 +357,12 @@ footer {
    padding-top: 0
 }
 
-.description {
-  margin-bottom: 1em;
-  margin-top: 1em;
+.description :first-child {
+  margin-top: 0;
+}
+
+.description :last-child {
+  margin-bottom: 0;
 }
 
 .code-caption {
@@ -372,11 +372,11 @@ footer {
 }
 
 .prettyprint {
-  font-size: 13px;
   border: 1px solid #ddd;
-  border-radius: 3px;
+  border-radius: 2px;
   box-shadow: 0 1px 3px hsla(0, 0%, 0%, 0.05);
   overflow: auto;
+  margin: 0;
 }
 
 .prettyprint.source {
@@ -385,57 +385,13 @@ footer {
 
 .prettyprint code {
   font-size: 12px;
-  line-height: 18px;
   display: block;
   background-color: #fff;
   color: #4D4E53;
 }
 
-.prettyprint code:empty:before {
-  content: '';
-}
-
 .prettyprint > code {
-  padding: 15px
-}
-
-.prettyprint .linenums code {
-  padding: 0 15px
-}
-
-.prettyprint .linenums li:first-of-type code {
-  padding-top: 15px
-}
-
-.prettyprint code span.line {
-  display: inline-block
-}
-
-.prettyprint.linenums {
-  padding-left: 70px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.prettyprint.linenums ol {
-   padding-left: 0
-}
-
-.prettyprint.linenums li {
-   border-left: 3px #ddd solid
-}
-
-.prettyprint.linenums li.selected, .prettyprint.linenums li.selected * {
-   background-color: lightyellow
-}
-
-.prettyprint.linenums li * {
-   -webkit-user-select: text;
-   -moz-user-select: text;
-   -ms-user-select: text;
-   user-select: text;
+  padding: 0.5em 1em;
 }
 
 .params, .props {
@@ -446,7 +402,6 @@ footer {
   box-shadow: 0 1px 3px rgba(0,0,0,0.1);
   width: 100%;
   font-size: 14px;
-  /* margin-left: 15px; */
 }
 
 .params .name, .props .name, .name code {
@@ -461,6 +416,12 @@ footer {
    vertical-align: top;
    padding: 10px;
    display: table-cell;
+}
+
+.params th {
+  padding: 5px 10px;
+  font-size: 90%;
+  color: #aaa;
 }
 
 .params td {
@@ -488,7 +449,6 @@ footer {
 }
 
 dl.param-type {
-  /* border-bottom: 1px solid hsl(0, 0%, 87%); */
   margin: 0;
   padding: 0;
   font-size: 16px;
@@ -630,9 +590,7 @@ dl.param-type {
 }
 
 .section-method {
-  margin-bottom: 30px;
-  padding-bottom: 30px;
-  border-bottom: 1px solid #eee;
+  margin-bottom: 2em;
 }
 
 @media only screen and (min-width: 320px) and (max-width: 680px) {
